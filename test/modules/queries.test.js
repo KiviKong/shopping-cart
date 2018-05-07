@@ -4,11 +4,10 @@ const assert = require('assert');
 const queries = require('./../../app/modules/queries');
 
 describe('Queries', () => {
-
   // Before each test we drop the users table.
-  beforeEach( async () => { 
+  beforeEach( async () => {
     return await queries.dropTable('items');
-  }); 
+  });
 
   describe('getAll', () => {
     it('should return 0 elements because the table items was dropped before', async () => {
@@ -24,5 +23,4 @@ describe('Queries', () => {
       return assert.equal(item.Code, newItem.Code) && assert.equal(item.Name, newItem.Name) && assert.equal(item.Price, newItem.Price);
     });
   });
-
 });

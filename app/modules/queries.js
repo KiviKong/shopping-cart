@@ -4,35 +4,35 @@ let sequelize = null;
 // Basic database configuration that postgres need.
 const databaseTools = {
     config: {
-        "host": process.env.DB_HOST,
-        "port": process.env.DB_PORT,
-        "dialect": 'postgres',
-        "logging": false,
-        "operatorsAliases": false,
-    }, 
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
+        dialect: 'postgres',
+        logging: false,
+        operatorsAliases: false,
+    },
     users: {
         userName: {
-          type: Sequelize.STRING
+          type: Sequelize.STRING,
         },
         apiKey: {
-          type: Sequelize.STRING
-        }
+          type: Sequelize.STRING,
+        },
     },
     items: {
         Code: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
         },
         Name: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
         },
         Price: {
-            type: Sequelize.INTEGER
-        }
-    }
+            type: Sequelize.INTEGER,
+        },
+    },
 };
 
 // Standard queries that all components can use, it's important to close the connection at the end of each query.
-// After close the connection, the garbage collector come to the rescue, we are safe. 
+// After close the connection, the garbage collector come to the rescue, we are safe.
 const queries = {
     getAll: async (table, attributes) => {
         try {
@@ -40,7 +40,7 @@ const queries = {
             let elements = await sequelize.define(table, databaseTools[table]).findAll({attributes: attributes, raw: true});
             sequelize.close();
             return elements;
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             return null;
         }
@@ -51,7 +51,7 @@ const queries = {
             let element = await sequelize.define(table, databaseTools[table]).findOne({where: condition, attributes: attributes, raw: true});
             sequelize.close();
             return element;
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             return null;
         }
@@ -62,7 +62,7 @@ const queries = {
             let succes = await sequelize.define(table, databaseTools[table]).create(newElement);
             sequelize.close();
             return succes.toJSON();
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             return null;
         }
@@ -74,11 +74,11 @@ const queries = {
             sequelize.close();
             console.log('Table dropped: ' + table);
             return 1;
-        } catch(err) {
+        } catch (err) {
             console.log(err);
             return null;
         }
-    }
+    },
 };
 
 module.exports = queries;
