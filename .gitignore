@@ -54,6 +54,13 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
+# dotenv production environment variables file
+config/environments/production.env
+
+# package-lock.json
+package-lock.json
+
+# others
+notes.txt
+
 

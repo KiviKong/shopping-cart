@@ -1,0 +1,32 @@
+{
+  "name": "shopping-cart",
+  "version": "1.0.0",
+  "description": "API that calculate the total amount to be pay from a sell",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/**/*.js ",
+    "dev": "node index.js development",
+    "prod": "node index.js production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KiviKong/shopping-cart.git"
+  },
+  "author": "Kevin Castro Ramirez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KiviKong/shopping-cart/issues"
+  },
+  "homepage": "https://github.com/KiviKong/shopping-cart#readme",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "pg": "^7.4.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.6"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "mocha": "^5.1.1"
+  }
+}
