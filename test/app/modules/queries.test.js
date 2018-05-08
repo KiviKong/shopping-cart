@@ -3,7 +3,7 @@
 
 require('dotenv').config({path: './config/environments/development.env'});
 const assert = require('assert');
-const queries = require('./../../app/modules/queries');
+const queries = require('./../../../app/modules/queries');
 
 const itemTest = {Code: 'PANTS', Name: 'Pants', Price: 5};
 
