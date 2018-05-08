@@ -4,7 +4,7 @@
   "description": "API that calculate the total amount to be pay from a sell",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/**/*.js ",
+    "test": "mocha test/**/*.js --timeout 10000",
     "dev": "node index.js development",
     "prod": "node index.js production"
   },
