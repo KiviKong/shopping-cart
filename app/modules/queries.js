@@ -77,7 +77,6 @@ const queries = {
             await sequelize.define(table, databaseTools[table])
                 .sync({force: true});
             sequelize.close();
-            console.log('Table dropped: ' + table);
             return true;
         } catch (err) {
             console.log(err);

@@ -1,6 +1,5 @@
 // path should never be changed to the production.env file.
 // Even so, we do not have super user permissions, I hope.
-
 require('dotenv').config({path: './config/environments/development.env'});
 const assert = require('assert');
 const queries = require('./../../../app/modules/queries');
