@@ -1,0 +1,22 @@
+{
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module"
+    },
+    "extends": ["eslint:recommended", "google"],
+    "rules": {
+        "no-console": 0,
+        "linebreak-style": 0,
+        "max-len":  ["error", { "code": 200 }],
+        "mocha/no-exclusive-tests": "error"
+    },
+    "plugins": [
+        "json",
+        "markdown",
+        "mocha"
+    ]
+}
