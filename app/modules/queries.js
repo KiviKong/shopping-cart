@@ -12,20 +12,24 @@ const databaseTools = {
     users: {
         userName: {
           type: Sequelize.STRING,
+          primaryKey: true,
         },
         apiKey: {
           type: Sequelize.STRING,
+          allowNull: false,
         },
     },
     items: {
         Code: {
             type: Sequelize.STRING,
+            primaryKey: true,
         },
         Name: {
             type: Sequelize.STRING,
         },
         Price: {
             type: Sequelize.FLOAT,
+            allowNull: false,
         },
     },
 };
@@ -54,6 +58,30 @@ const queries = {
                 .findOne({where: condition, attributes: attributes, raw: true});
             sequelize.close();
             return element;
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    },
+    insertOne: async (table, newElement) => {
+        try {
+            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, databaseTools.config);
+            let succes = await sequelize.define(table, databaseTools[table])
+                .create(newElement);
+            sequelize.close();
+            return succes.toJSON();
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    },
+    dropTable: async (table) => {
+        try {
+            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, databaseTools.config);
+            await sequelize.define(table, databaseTools[table])
+                .sync({force: true});
+            sequelize.close();
+            return true;
         } catch (err) {
             console.log(err);
             return null;
