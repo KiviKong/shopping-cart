@@ -8,8 +8,8 @@ const tables = {
     users: null,
     items: null,
     promotions: null,
-    items_promotions: null
-}
+    items_promotions: null,
+};
 
 const startConnection = () => {
     sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, sequelizeConfig);
@@ -19,61 +19,61 @@ const startConnection = () => {
     tables.items_promotions = sequelize.define('items_promotions', models.items_promotions);
     tables.items_promotions.belongsTo(tables.items, {foreignKey: 'code'});
     tables.items_promotions.belongsTo(tables.promotions, {foreignKey: 'idPromotion'});
-}
+};
 
-const closeConnection = () => {
-    sequelize.close();
-}
-
-// Standard queries that all components can use, it's important to close the connection at the end of each query.
-// After close the connection, the garbage collector come to the rescue, we are safe.
+// Standard queries that all components can use, it's important to keep connection.
 const queries = {
     getAll: async (table, attributes) => {
+        await sequelize.authenticate()
+            .catch((err) => {
+                startConnection();
+            });
         try {
-            startConnection();
-            let elements = await tables[table].findAll({attributes: attributes, raw: true});
-            closeConnection();
-            return elements;
+            return await tables[table].findAll({attributes: attributes, raw: true});
         } catch (err) {
             console.log(err);
             return null;
         }
     },
     getOne: async (table, condition, attributes) => {
+        await sequelize.authenticate()
+            .catch((err) => {
+                startConnection();
+            });
         try {
-            startConnection();
-            let element = await tables[table].findOne({where: condition, attributes: attributes, raw: true});
-            closeConnection();
-            return element;
+            return await tables[table].findOne({where: condition, attributes: attributes, raw: true});
         } catch (err) {
             console.log(err);
             return null;
         }
     },
     insertOne: async (table, newElement) => {
+        await sequelize.authenticate()
+            .catch((err) => {
+                startConnection();
+            });
         try {
-            startConnection();
-            let succes = await tables[table].create(newElement);
-            closeConnection();
-            return succes.toJSON();
+            return await tables[table].create(newElement).toJSON();
         } catch (err) {
             console.log(err);
             return null;
         }
     },
     dropTable: async (table) => {
+        await sequelize.authenticate()
+            .catch((err) => {
+                startConnection();
+            });
         try {
-            startConnection();
             await tables[table].sync({force: true});
-            closeConnection();
             return true;
         } catch (err) {
             console.log(err);
             return null;
         }
     },
-    startConnection: startConnection,
-    closeConnection: closeConnection
 };
+
+startConnection();
 
 module.exports = queries;

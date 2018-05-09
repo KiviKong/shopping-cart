@@ -33,7 +33,7 @@ const models = {
             allowNull: false,
         },
     },
-    items_promotions: {
+    items_promotions: { // This is a weak entity
         code: {
             type: Sequelize.STRING,
             primaryKey: true,
@@ -42,7 +42,7 @@ const models = {
             type: Sequelize.STRING,
             primaryKey: true,
         },
-    } // This is a weak entity
+    },
 };
 
 module.exports = models;

@@ -5,9 +5,9 @@ const sequelizeConfig = {
     logging: false,
     operatorsAliases: false,
     pool: {
-        max: 5,
+        max: 1,
         min: 0,
-        idle: 5000
+        idle: 10000,
     },
 };
 

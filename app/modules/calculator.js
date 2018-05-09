@@ -1,5 +1,5 @@
-let items = null;
-let promotions = null;
+// let items = null;
+// let promotions = null;
 const amount = {
     calculateTotalAmount: (codes) => {
 

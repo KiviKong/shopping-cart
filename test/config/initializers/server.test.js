@@ -1,10 +1,11 @@
+/* eslint-env node, mocha */
 require('dotenv').config({path: './config/environments/development.env'});
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('./../../../config/initializers/server');
 const pjson = require('./../../../package.json');
 
-let should = chai.should();
+chai.should();
 chai.use(chaiHttp);
 
 describe('Server', () => {

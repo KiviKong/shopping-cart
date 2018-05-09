@@ -1,3 +1,4 @@
+/* eslint-env node, mocha */
 // path should never be changed to the production.env file.
 // Even so, we do not have super user permissions, I hope.
 require('dotenv').config({path: './config/environments/development.env'});
@@ -13,7 +14,7 @@ describe('Queries', () => {
       return assert.equal(users.length, 3);
     });
   });
-  
+
   describe('getOne', () => {
     it('The returned item should be the same that itemTest', async () => {
       let newItem = await queries.getOne('items', {code: 'PANTS'}, ['code', 'name', 'price']);
