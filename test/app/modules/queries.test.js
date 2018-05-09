@@ -4,21 +4,21 @@ require('dotenv').config({path: './config/environments/development.env'});
 const assert = require('assert');
 const queries = require('./../../../app/modules/queries');
 
-const itemTest = {Code: 'PANTS', Name: 'Pants', Price: 5};
+const itemTest = {code: 'PANTS', name: 'Pants', price: 5};
 
 describe('Queries', () => {
   describe('getAll', () => {
-    it('Should return 0 elements because the table was dropped before', async () => {
-      let users = await queries.getAll('items', ['Code', 'Name']);
-      return assert.equal(users.length, 0);
+    it('Should return 3 elements, t-shirt, pants and hat', async () => {
+      let users = await queries.getAll('items', ['code', 'name']);
+      return assert.equal(users.length, 3);
     });
   });
   
   describe('getOne', () => {
     it('The returned item should be the same that itemTest', async () => {
-      let newItem = await queries.getOne('items', {Code: 'PANTS'}, ['Code', 'Name', 'Price']);
-      return assert.equal(itemTest.Code, newItem.Code) && assert.equal(itemTest.Name, newItem.Name)
-        && assert.equal(itemTest.Price, newItem.Price);
+      let newItem = await queries.getOne('items', {code: 'PANTS'}, ['code', 'name', 'price']);
+      return assert.equal(itemTest.code, newItem.code) && assert.equal(itemTest.name, newItem.name)
+        && assert.equal(itemTest.price, newItem.price);
     });
   });
 });
