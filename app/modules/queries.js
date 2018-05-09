@@ -1,35 +1,6 @@
 const Sequelize = require('sequelize');
-
-// Basic database configuration.
-const databaseTools = {
-    config: {
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,
-        dialect: 'postgres',
-        logging: false,
-        operatorsAliases: false,
-    },
-    users: {
-        userName: {
-          type: Sequelize.STRING,
-        },
-        apiKey: {
-          type: Sequelize.STRING,
-        },
-    },
-    items: {
-        Code: {
-            type: Sequelize.STRING,
-        },
-        Name: {
-            type: Sequelize.STRING,
-        },
-        Price: {
-            type: Sequelize.INTEGER,
-        },
-    },
-};
-
+const models = require('./models');
+const sequelizeConfig = require('./../../config/sequelize/config');
 let sequelize = null;
 
 // Standard queries that all components can use, it's important to close the connection at the end of each query.
@@ -37,8 +8,8 @@ let sequelize = null;
 const queries = {
     getAll: async (table, attributes) => {
         try {
-            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, databaseTools.config);
-            let elements = await sequelize.define(table, databaseTools[table])
+            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, sequelizeConfig);
+            let elements = await models[table]
                 .findAll({attributes: attributes, raw: true});
             sequelize.close();
             return elements;
@@ -49,8 +20,8 @@ const queries = {
     },
     getOne: async (table, condition, attributes) => {
         try {
-            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, databaseTools.config);
-            let element = await sequelize.define(table, databaseTools[table])
+            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, sequelizeConfig);
+            let element = await models[table]
                 .findOne({where: condition, attributes: attributes, raw: true});
             sequelize.close();
             return element;
@@ -61,8 +32,8 @@ const queries = {
     },
     insertOne: async (table, newElement) => {
         try {
-            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, databaseTools.config);
-            let succes = await sequelize.define(table, databaseTools[table])
+            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, sequelizeConfig);
+            let succes = await models[table]
                 .create(newElement);
             sequelize.close();
             return succes.toJSON();
@@ -73,8 +44,8 @@ const queries = {
     },
     dropTable: async (table) => {
         try {
-            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, databaseTools.config);
-            await sequelize.define(table, databaseTools[table])
+            sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, sequelizeConfig);
+            await models[table]
                 .sync({force: true});
             sequelize.close();
             return true;
