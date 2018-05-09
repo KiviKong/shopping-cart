@@ -1,0 +1,44 @@
+{
+  "development": {
+    "username": "root",
+    "password": "incorrecta",
+    "database": "myBusiness",
+    "host": "postgrestestv2.cntkpogffmmv.us-east-2.rds.amazonaws.com",
+    "dialect": "postgres",
+    "logging": false,
+    "operatorsAliases": false,
+    "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false,
+    "operatorsAliases": false,
+    "pool": {
+        "max": 1,
+        "min": 0,
+        "idle": 10000
+    }
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false,
+    "operatorsAliases": false,
+    "pool": {
+        "max": 1,
+        "min": 0,
+        "idle": 10000
+    }
+  }
+}

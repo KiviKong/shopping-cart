@@ -1,8 +1,8 @@
 /* eslint-env node, mocha */
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('./../../../config/initializers/server');
-const queries = require('./../../../app/modules/queries');
+const server = require('./../app/server');
+const queries = require('./../app/modules/queries');
 
 chai.should();
 chai.use(chaiHttp);

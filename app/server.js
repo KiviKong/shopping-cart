@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const pjson = require('./../../package.json');
-const items = require('./../../app/routes/items');
+const pjson = require('./../package.json');
+const items = require('./routes/items');
 const app = express();
 
 app.use(bodyParser.text());

@@ -4,9 +4,8 @@
   "description": "API that calculate the total amount to be pay from a sell",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha test/**/*.js --timeout 10000",
-    "dev": "node index.js development",
-    "prod": "node index.js production",
+    "test": "nyc mocha test/**/*.test.js --timeout 10000",
+    "start": "node index.js",
     "lint": "./node_modules/.bin/eslint ."
   },
   "repository": {
@@ -26,7 +25,8 @@
     "nyc": "^11.7.2",
     "pg": "^7.4.2",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.37.6"
+    "sequelize": "^4.37.6",
+    "sequelize-mock": "^0.10.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",

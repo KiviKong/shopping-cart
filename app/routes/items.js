@@ -1,5 +1,4 @@
 const queries = require('./../modules/queries');
-
 const items = {
     getAll: async (req, res) => {
         try {

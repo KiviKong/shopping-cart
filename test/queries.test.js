@@ -1,17 +1,20 @@
 /* eslint-env node, mocha */
-// path should never be changed to the production.env file.
-// Even so, we do not have super user permissions, I hope.
-require('dotenv').config({path: './config/environments/development.env'});
 const assert = require('assert');
-const queries = require('./../../../app/modules/queries');
+const chai = require('chai');
+const queries = require('./../app/modules/queries');
 
 const itemTest = {code: 'PANTS', name: 'Pants', price: 5};
+chai.should();
 
 describe('Queries', () => {
   describe('getAll', () => {
-    it('Should return 3 elements, t-shirt, pants and hat', async () => {
+    it('Should return an array of elements', async () => {
       let users = await queries.getAll('items', ['code']);
-      return assert.equal(users.length, 3);
+      users.should.be.a('array');
+    });
+    it('Should return false because missing arguments', async () => {
+      let users = await queries.getAll('', ['']);
+      users.should.be.equal(false);
     });
   });
 

@@ -1,9 +1,8 @@
 /* eslint-env node, mocha */
-require('dotenv').config({path: './config/environments/development.env'});
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const server = require('./../../../config/initializers/server');
-const pjson = require('./../../../package.json');
+const server = require('./../app/server');
+const pjson = require('./../package.json');
 
 chai.should();
 chai.use(chaiHttp);
