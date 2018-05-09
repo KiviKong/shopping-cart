@@ -4,8 +4,8 @@
   "description": "API that calculate the total amount to be pay from a sell",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha test/**/*.test.js --timeout 10000",
-    "start": "node index.js",
+    "test": "export NODE_ENV=test && nyc mocha test/**/*.test.js --timeout 10000",
+    "start": "export NODE_ENV=development && node index.js",
     "lint": "./node_modules/.bin/eslint ."
   },
   "repository": {
