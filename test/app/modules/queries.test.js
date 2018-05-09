@@ -9,7 +9,7 @@ const itemTest = {code: 'PANTS', name: 'Pants', price: 5};
 describe('Queries', () => {
   describe('getAll', () => {
     it('Should return 3 elements, t-shirt, pants and hat', async () => {
-      let users = await queries.getAll('items', ['code', 'name']);
+      let users = await queries.getAll('items', ['code']);
       return assert.equal(users.length, 3);
     });
   });

@@ -4,6 +4,11 @@ const sequelizeConfig = {
     dialect: 'postgres',
     logging: false,
     operatorsAliases: false,
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 5000
+    },
 };
 
 module.exports = sequelizeConfig;
