@@ -10,7 +10,8 @@ chai.use(chaiHttp);
 describe('Server', () => {
     describe('GET /', () => {
         it('it should GET API name and version', async () => {
-            let response = await chai.request(server).get('/');
+            let response = await chai.request(server)
+            .get('/');
             response.should.have.status(200);
             response.body.should.be.a('object');
             response.body.should.have.property('API_name').eql(pjson.name);
@@ -21,7 +22,9 @@ describe('Server', () => {
         it('it should return the total amount to be paid', async () => {
             let response = await chai.request(server)
             .post('/amount')
-            .set('content-type', 'application/json')
+            .set('Content-type', 'application/json')
+            .set('Authorization', 'Basic ZnVsYW5pdG86YmVzdGFwaWV2ZXI=')
+            .set('accept-encoding', 'gzip, deflate')
             .send({codes: ['PANTS', 'TSHIRT', 'PANTS']});
             response.should.have.status(200);
             response.body.should.be.a('object');
