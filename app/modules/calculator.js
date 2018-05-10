@@ -2,7 +2,7 @@ let total;
 let itemPrice;
 let map = new Map();
 
-const amount = {
+const calculator = {
     calculateTotalAmount: (items, prices, promotions) => {
         total = 0;
         itemPrice = 0;
@@ -25,7 +25,8 @@ const amount = {
         promotions.forEach((element) => {
             total -= promotionsLogic[element.idPromotion](map.get(element.code).count, map.get(element.code).price);
         });
-        console.log(total);
+
+        return total;
     },
 };
 
@@ -38,7 +39,7 @@ const promotionsLogic = {
     },
 };
 
-// amount.calculateTotalAmount(
+// calculator.calculateTotalAmount(
 //     ['PANTS', 'TSHIRT', 'HAT'],
 //     [{code: 'PANTS', price: 5},
 //     {code: 'TSHIRT', price: 20},
@@ -46,7 +47,7 @@ const promotionsLogic = {
 //     [{code: 'PANTS', idPromotion: '2-for-1'},
 //     {code: 'TSHIRT', idPromotion: 'bulk'}]);
 
-// amount.calculateTotalAmount(
+// calculator.calculateTotalAmount(
 //     ['PANTS', 'TSHIRT', 'PANTS'],
 //     [{code: 'PANTS', price: 5},
 //     {code: 'TSHIRT', price: 20},
@@ -54,7 +55,7 @@ const promotionsLogic = {
 //     [{code: 'PANTS', idPromotion: '2-for-1'},
 //     {code: 'TSHIRT', idPromotion: 'bulk'}]);
 
-// amount.calculateTotalAmount(
+// calculator.calculateTotalAmount(
 //     ['TSHIRT', 'TSHIRT', 'TSHIRT', 'PANTS', 'TSHIRT'],
 //     [{code: 'PANTS', price: 5},
 //     {code: 'TSHIRT', price: 20},
@@ -62,7 +63,7 @@ const promotionsLogic = {
 //     [{code: 'PANTS', idPromotion: '2-for-1'},
 //     {code: 'TSHIRT', idPromotion: 'bulk'}]);
 
-// amount.calculateTotalAmount(
+// calculator.calculateTotalAmount(
 //     ['PANTS', 'TSHIRT', 'PANTS', 'PANTS', 'HAT', 'TSHIRT', 'TSHIRT'],
 //     [{code: 'PANTS', price: 5},
 //     {code: 'TSHIRT', price: 20},
@@ -70,4 +71,4 @@ const promotionsLogic = {
 //     [{code: 'PANTS', idPromotion: '2-for-1'},
 //     {code: 'TSHIRT', idPromotion: 'bulk'}]);
 
-module.exports = amount;
+module.exports = calculator;
