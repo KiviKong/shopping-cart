@@ -36,6 +36,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+# sequelize migrations
+migrations/
+
 # Typescript v1 declaration files
 typings/
 
