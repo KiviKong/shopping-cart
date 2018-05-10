@@ -1,31 +1,20 @@
 'use strict';
+// This is a weak entity
 module.exports = (sequelize, DataTypes) => {
-  let weakEntity = sequelize.define('items_promotions', { // This is a weak entity
+  let weakEntity = sequelize.define('items_promotions', {
     code: {
         type: DataTypes.STRING,
         primaryKey: true,
-        references: {
-          model: 'items',
-          key: 'code',
-      },
-      onUpdate: 'cascade',
-      onDelete: 'cascade',
     },
     idPromotion: {
         type: DataTypes.STRING,
         primaryKey: true,
-        references: {
-          model: 'promotions',
-          key: 'idPromotion',
-      },
-      onUpdate: 'cascade',
-      onDelete: 'cascade',
     },
   }, {});
   weakEntity.associate = function(models) {
     // associations can be defined here
-    weakEntity.belongsTo(models.items);
-    weakEntity.belongsTo(models.promotions);
+    weakEntity.belongsTo(models.items, {foreignKey: 'code'});
+    weakEntity.belongsTo(models.promotions, {foreignKey: 'idPromotion'});
   };
   return weakEntity;
 };

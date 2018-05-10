@@ -5,8 +5,6 @@
     "database": "myBusiness",
     "host": "postgrestestv2.cntkpogffmmv.us-east-2.rds.amazonaws.com",
     "dialect": "postgres",
-    "logging": false,
-    "operatorsAliases": false,
     "pool": {
         "max": 5,
         "min": 0,
