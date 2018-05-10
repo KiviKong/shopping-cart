@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 describe('Server', () => {
     describe('GET /', () => {
-        it('it should GET API name and version', async () => {
+        it('it should get API name and version', async () => {
             let response = await chai.request(server)
             .get('/');
             response.should.have.status(200);
@@ -29,6 +29,13 @@ describe('Server', () => {
             response.should.have.status(200);
             response.body.should.be.a('object');
             response.body.should.have.property('total').eql(25);
+        });
+        it('it should return Unauthorized (status 401)', async () => {
+            let response = await chai.request(server)
+            .post('/amount')
+            .set('Content-type', 'application/json')
+            .send({codes: ['PANTS', 'TSHIRT', 'PANTS']});
+            response.should.have.status(401);
         });
     });
 });
