@@ -17,4 +17,15 @@ describe('Server', () => {
             response.body.should.have.property('API_version').eql(pjson.version);
         });
     });
+    describe('POST /amount', () => {
+        it('it should return the total amount to be paid', async () => {
+            let response = await chai.request(server)
+            .post('/amount')
+            .set('content-type', 'application/json')
+            .send({codes: ['PANTS', 'TSHIRT', 'PANTS']});
+            response.should.have.status(200);
+            response.body.should.be.a('object');
+            response.body.should.have.property('total').eql(25);
+        });
+    });
 });
