@@ -1,0 +1,349 @@
+{
+	"info": {
+		"name": "Shoppin-cart requests",
+		"_postman_id": "1b0a1ad7-167d-4641-8059-09efa4cf3675",
+		"description": "Some requests that test the functionality of the best API ever. :D",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"codes\": [\"PANTS\", \"TSHIRT\", \"PANTS\", \"PANTS\", \"HAT\", \"TSHIRT\", \"TSHIRT\"]\n}"
+				},
+				"url": {
+					"raw": "http://18.188.48.205:8080/",
+					"protocol": "http",
+					"host": [
+						"18",
+						"188",
+						"48",
+						"205"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				},
+				"description": "this endpoint return the total amount to be paid of the next elements.\n\n['PANTS', 'TSHIRT', 'PANTS', 'PANTS', 'HAT', 'TSHIRT', 'TSHIRT']"
+			},
+			"response": []
+		},
+		{
+			"name": "/items",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "bestapiever",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "fulanito",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"codes\": [\"PANTS\", \"TSHIRT\", \"PANTS\", \"PANTS\", \"HAT\", \"TSHIRT\", \"TSHIRT\"]\n}"
+				},
+				"url": {
+					"raw": "http://18.188.48.205:8080/items",
+					"protocol": "http",
+					"host": [
+						"18",
+						"188",
+						"48",
+						"205"
+					],
+					"port": "8080",
+					"path": [
+						"items"
+					]
+				},
+				"description": "this endpoint return the total amount to be paid of the next elements.\n\n['PANTS', 'TSHIRT', 'PANTS', 'PANTS', 'HAT', 'TSHIRT', 'TSHIRT']"
+			},
+			"response": []
+		},
+		{
+			"name": "/promotions",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "bestapiever",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "fulanito",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"codes\": [\"PANTS\", \"TSHIRT\", \"PANTS\", \"PANTS\", \"HAT\", \"TSHIRT\", \"TSHIRT\"]\n}"
+				},
+				"url": {
+					"raw": "http://18.188.48.205:8080/promotions",
+					"protocol": "http",
+					"host": [
+						"18",
+						"188",
+						"48",
+						"205"
+					],
+					"port": "8080",
+					"path": [
+						"promotions"
+					]
+				},
+				"description": "this endpoint return the total amount to be paid of the next elements.\n\n['PANTS', 'TSHIRT', 'PANTS', 'PANTS', 'HAT', 'TSHIRT', 'TSHIRT']"
+			},
+			"response": []
+		},
+		{
+			"name": "/amount 74.5",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "bestapiever",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "fulanito",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"codes\": [\"PANTS\", \"TSHIRT\", \"PANTS\", \"PANTS\", \"HAT\", \"TSHIRT\", \"TSHIRT\"]\n}"
+				},
+				"url": {
+					"raw": "http://18.188.48.205:8080/amount",
+					"protocol": "http",
+					"host": [
+						"18",
+						"188",
+						"48",
+						"205"
+					],
+					"port": "8080",
+					"path": [
+						"amount"
+					]
+				},
+				"description": "this endpoint return the total amount to be paid of the next elements.\n\n['PANTS', 'TSHIRT', 'PANTS', 'PANTS', 'HAT', 'TSHIRT', 'TSHIRT']"
+			},
+			"response": []
+		},
+		{
+			"name": "/amount 25",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "bestapiever",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "fulanito",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"codes\": [\"PANTS\", \"TSHIRT\", \"PANTS\"]\n}"
+				},
+				"url": {
+					"raw": "http://18.188.48.205:8080/amount",
+					"protocol": "http",
+					"host": [
+						"18",
+						"188",
+						"48",
+						"205"
+					],
+					"port": "8080",
+					"path": [
+						"amount"
+					]
+				},
+				"description": "this endpoint return the total amount to be paid of the next elements.\n\n['PANTS', 'TSHIRT', 'PANTS', 'PANTS', 'HAT', 'TSHIRT', 'TSHIRT']"
+			},
+			"response": []
+		},
+		{
+			"name": "/amount 32.5",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "bestapiever",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "fulanito",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"codes\": [\"PANTS\", \"TSHIRT\", \"HAT\"]\n}"
+				},
+				"url": {
+					"raw": "http://18.188.48.205:8080/amount",
+					"protocol": "http",
+					"host": [
+						"18",
+						"188",
+						"48",
+						"205"
+					],
+					"port": "8080",
+					"path": [
+						"amount"
+					]
+				},
+				"description": "this endpoint return the total amount to be paid of the next elements.\n\n[\"PANTS\", \"TSHIRT\", \"HAT\"]"
+			},
+			"response": []
+		},
+		{
+			"name": "/amount 81",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "bestapiever",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "fulanito",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"codes\": [\"TSHIRT\", \"TSHIRT\", \"TSHIRT\", \"PANTS\", \"TSHIRT\"]\n}"
+				},
+				"url": {
+					"raw": "http://18.188.48.205:8080/amount",
+					"protocol": "http",
+					"host": [
+						"18",
+						"188",
+						"48",
+						"205"
+					],
+					"port": "8080",
+					"path": [
+						"amount"
+					]
+				},
+				"description": "this endpoint return the total amount to be paid of the next elements.\n\n[\"PANTS\", \"TSHIRT\", \"HAT\"]"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4ca573f7-5892-4f25-9710-02e08dda84b8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "861937b6-638b-4908-acc1-f1cbbc54619c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
