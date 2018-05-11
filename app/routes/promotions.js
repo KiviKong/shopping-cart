@@ -1,12 +1,12 @@
 const queries = require('./../modules/queries');
-const items = {
+const promotions = {
     getAll: async (req, res) => {
         try {
-            res.json(await queries.getAll('items', ['code', 'name', 'price']));
+            res.json(await queries.getAll('promotions', ['idPromotion', 'description']));
         } catch (err) {
             res.send(err);
         }
     },
 };
 
-module.exports = items;
+module.exports = promotions;
