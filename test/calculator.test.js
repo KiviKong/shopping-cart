@@ -15,6 +15,7 @@ describe('Calculator', () => {
                     {code: 'TSHIRT', idPromotion: 'bulk'}]);
             total.should.be.eql(74.5);
         });
+
         it(' receive [PANTS, TSHIRT, PANTS] should return 25', async () => {
             let total = calculator.calculateTotalAmount(
                 ['PANTS', 'TSHIRT', 'PANTS'],
@@ -24,6 +25,22 @@ describe('Calculator', () => {
                 [{code: 'PANTS', idPromotion: '2-for-1'},
                 {code: 'TSHIRT', idPromotion: 'bulk'}]);
             total.should.be.eql(25);
+        });
+
+        it(' receive [] (empty arrays) should return -1', async () => {
+            let total = calculator.calculateTotalAmount();
+            total.should.be.eql(-1);
+        });
+
+        it(' receive [SCARF, SHOES, SOCKS] should return 0 because are not stored in the db', async () => {
+            let total = calculator.calculateTotalAmount(
+                ['SCARF', 'SHOES', 'SOCKS'],
+                [{code: 'PANTS', price: 5},
+                {code: 'TSHIRT', price: 20},
+                {code: 'HAT', price: 7.5}],
+                [{code: 'PANTS', idPromotion: '2-for-1'},
+                {code: 'TSHIRT', idPromotion: 'bulk'}]);
+            total.should.be.eql(0);
         });
     });
 });
