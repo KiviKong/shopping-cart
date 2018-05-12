@@ -27,12 +27,12 @@ describe('Calculator', () => {
             total.should.be.eql(25);
         });
 
-        it(' receive [] (empty arrays) should return -1', async () => {
+        it(' receive [] (empty arrays) should return 0', async () => {
             let total = calculator.calculateTotalAmount();
-            total.should.be.eql(-1);
+            total.should.be.eql(0);
         });
 
-        it(' receive [SCARF, SHOES, SOCKS] should return 0 because are not stored in the db', async () => {
+        it(' receive [SCARF, SHOES, SOCKS] should return 0 because this codes are not stored in the db', async () => {
             let total = calculator.calculateTotalAmount(
                 ['SCARF', 'SHOES', 'SOCKS'],
                 [{code: 'PANTS', price: 5},

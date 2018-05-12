@@ -37,7 +37,7 @@ describe('Server', () => {
             .send({codes: ['PANTS', 'TSHIRT', 'PANTS']});
             response.should.have.status(401);
         });
-        it('it should return Bad request information', async () => {
+        it('it should return Bad request information (status 400)', async () => {
             let response = await chai.request(server)
             .post('/amount')
             .set('Content-type', 'application/json')

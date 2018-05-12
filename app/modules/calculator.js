@@ -4,10 +4,6 @@ let map = new Map();
 
 const calculator = {
     calculateTotalAmount: (items = [], prices = [], promotions = []) => {
-        if (items.length === 0 || prices.length === 0) {
-            return -1;
-        }
-
         total = 0; map.clear();
 
         items.forEach((element) => {
