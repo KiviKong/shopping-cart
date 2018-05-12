@@ -37,5 +37,15 @@ describe('Server', () => {
             .send({codes: ['PANTS', 'TSHIRT', 'PANTS']});
             response.should.have.status(401);
         });
+        it('it should return Bad request information', async () => {
+            let response = await chai.request(server)
+            .post('/amount')
+            .set('Content-type', 'application/json')
+            .set('Authorization', 'Basic ZnVsYW5pdG86YmVzdGFwaWV2ZXI=')
+            .set('accept-encoding', 'gzip, deflate');
+            response.should.have.status(400);
+            response.body.should.be.a('object');
+            response.body.should.have.property('message').eql('Bad request information');
+        });
     });
 });
