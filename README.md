@@ -8,25 +8,24 @@ This API was made with didactic purposes. The databases don't contain sensitive 
 
 If you want to try it you can use postman. Just open ```Shopping-cart_postman_collection.json```. You need to authenticate, so I include a default user and password.
 
-Take care of the scrips defined in the ```package.json```
-
-Linux:
+The API use an environment variable to determine which port use.
 
 ```javascript
-"scripts": {
-    "test": "export NODE_ENV=test && nyc mocha test/**/*.test.js --timeout 10000",
-    "start": "export NODE_ENV=development && node index.js",
-    ...
+let server = app.listen(process.env.APP_PORT);
+console.log('API listen on port ' + process.env.APP_PORT);
 ```
 
-Windows:
+So, you can use the port that you like, just define it before start.
 
-```javascript
-"scripts": {
-    "test": "SET NODE_ENV=test && nyc mocha test/**/*.test.js --timeout 10000",
-    "start": "SET NODE_ENV=development && node index.js",
-    ...
 ```
+export APP_PORT=8080
+```
+
+___
+
+## How it works
+
+The best API ever uses the information below.
 
 ## Items and prices
 
