@@ -74,6 +74,7 @@ This is a weak entity that allows to us assign one item in several promotions an
 You can change **prices** and **items assign to promotions** without modify a single code line and the API will works. But if you want to add a new promotion, you must define the promotion behavior in ```app/modules/calculator.js```
 
 Example:
+
 ```javascript
 const promotionsLogic = {
     '2-for-1': (itemsCount, price) => {
@@ -84,6 +85,7 @@ const promotionsLogic = {
     },
 };
 ```
+
 ___
 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/2000px-Docker_%28container_engine%29_logo.svg.png)
