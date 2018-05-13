@@ -31,12 +31,6 @@
     "username": null,
     "password": null,
     "database": null,
-    "host": null,
-    "dialect": null,
-    "pool": {
-        "max": 1,
-        "min": 0,
-        "idle": 10000
-    }
+    "host": null
   }
 }

@@ -1,29 +1,34 @@
 let total;
-let itemPrice;
+let item;
 let map = new Map();
 
 const calculator = {
-    calculateTotalAmount: (items, prices, promotions) => {
-        total = 0;
-        itemPrice = 0;
-        map.clear();
+    calculateTotalAmount: (items = [], prices = [], promotions = []) => {
+        total = 0; map.clear();
 
         items.forEach((element) => {
-            itemPrice = prices.find((e) => {
+            // According to items model, null values are not allowed.
+            // If there is a code, there is a price.
+            item = prices.find((e) => {
                 return e.code === element;
-            }).price;
+            });
 
-            total += itemPrice;
+            // But we can receive codes that are not stored in the database.
+            if (typeof item !== 'undefined') {
+                total += item.price;
 
-            if (map.has(element)) {
-                map.set(element, {count: map.get(element).count + 1, price: itemPrice});
-            } else {
-                map.set(element, {count: 1, price: itemPrice});
+                if (map.has(element)) {
+                    map.set(element, {count: map.get(element).count + 1, price: item.price});
+                } else {
+                    map.set(element, {count: 1, price: item.price});
+                }
             }
         });
 
         promotions.forEach((element) => {
-            total -= promotionsLogic[element.idPromotion](map.get(element.code).count, map.get(element.code).price);
+            if (map.has(element.code)) {
+                total -= promotionsLogic[element.idPromotion](map.get(element.code).count, map.get(element.code).price);
+            }
         });
 
         return total;
@@ -38,37 +43,5 @@ const promotionsLogic = {
         return itemsCount >= 3 ?(price * 0.05) * itemsCount : 0;
     },
 };
-
-// calculator.calculateTotalAmount(
-//     ['PANTS', 'TSHIRT', 'HAT'],
-//     [{code: 'PANTS', price: 5},
-//     {code: 'TSHIRT', price: 20},
-//     {code: 'HAT', price: 7.5}],
-//     [{code: 'PANTS', idPromotion: '2-for-1'},
-//     {code: 'TSHIRT', idPromotion: 'bulk'}]);
-
-// calculator.calculateTotalAmount(
-//     ['PANTS', 'TSHIRT', 'PANTS'],
-//     [{code: 'PANTS', price: 5},
-//     {code: 'TSHIRT', price: 20},
-//     {code: 'HAT', price: 7.5}],
-//     [{code: 'PANTS', idPromotion: '2-for-1'},
-//     {code: 'TSHIRT', idPromotion: 'bulk'}]);
-
-// calculator.calculateTotalAmount(
-//     ['TSHIRT', 'TSHIRT', 'TSHIRT', 'PANTS', 'TSHIRT'],
-//     [{code: 'PANTS', price: 5},
-//     {code: 'TSHIRT', price: 20},
-//     {code: 'HAT', price: 7.5}],
-//     [{code: 'PANTS', idPromotion: '2-for-1'},
-//     {code: 'TSHIRT', idPromotion: 'bulk'}]);
-
-// calculator.calculateTotalAmount(
-//     ['PANTS', 'TSHIRT', 'PANTS', 'PANTS', 'HAT', 'TSHIRT', 'TSHIRT'],
-//     [{code: 'PANTS', price: 5},
-//     {code: 'TSHIRT', price: 20},
-//     {code: 'HAT', price: 7.5}],
-//     [{code: 'PANTS', idPromotion: '2-for-1'},
-//     {code: 'TSHIRT', idPromotion: 'bulk'}]);
 
 module.exports = calculator;
